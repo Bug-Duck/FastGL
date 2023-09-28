@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"typescript": "^5.2.2"
+	},
+	"devDependencies": {
+    "@so1ve/eslint-config": "^0.106.1",
+    "eslint": "^8.42.0"
+	}
+}
