@@ -19,6 +19,10 @@ export class FastGLRenderingContext {
   y = 0;
   z = 0;
   lineWidth = 1;
+  #r = 0;
+  #g = 0;
+  #b = 0;
+  #a = 1;
 
   constructor(element: HTMLCanvasElement) {
     this.#element = element;
@@ -50,6 +54,10 @@ export class FastGLRenderingContext {
         x: this.x,
         y: this.y,
         z: this.z,
+        r: this.#r,
+        g: this.#g,
+        b: this.#b,
+        a: this.#a,
         lineWidth: this.lineWidth,
       }),
     );
@@ -59,6 +67,10 @@ export class FastGLRenderingContext {
     this.x = this.#memory[length - 1].x;
     this.y = this.#memory[length - 1].y;
     this.z = this.#memory[length - 1].z;
+    this.#r = this.#memory[length - 1].r;
+    this.#g = this.#memory[length - 1].g;
+    this.#b = this.#memory[length - 1].b;
+    this.#a = this.#memory[length - 1].a;
     this.lineWidth = this.#memory[length - 1].lineWidth;
   }
 
@@ -81,7 +93,7 @@ export class FastGLRenderingContext {
     compile(
       `
     void main(){
-      gl_FragColor = vec4(0,0,1.0,1.0);
+      gl_FragColor = vec4(${this.#r}, ${this.#g}, ${this.#b}, ${this.#a});
     }
     `,
       this.#webGLContext!.FRAGMENT_SHADER,
@@ -138,7 +150,7 @@ export class FastGLRenderingContext {
         compile(
           `
           void main(){
-            gl_FragColor = vec4(0,0,1.0,1.0);
+            gl_FragColor = vec4(${this.#r}, ${this.#g}, ${this.#b}, ${this.#a});
           }
           `,
           this.#webGLContext!.FRAGMENT_SHADER,
@@ -199,5 +211,12 @@ export class FastGLRenderingContext {
     this.x = x;
     this.y = y;
     this.z = z;
+  }
+
+  setStrokeColor(r: number, g: number, b: number, a: number) {
+    this.#r = r / 255;
+    this.#g = g / 255;
+    this.#b = b / 255;
+    this.#a = a;
   }
 }
