@@ -1,9 +1,26 @@
 {
+	"name": "fastgl",
+	"version": "0.0.1",
+	"type": "module",
 	"dependencies": {
-		"typescript": "^5.2.2"
+		"typescript": "^5.2.2",
+		"gl-matrix": "^3.4.3"
+	},
+	"scripts": {
+    "build": "rollup -c",
+    "clean": "rimraf ./dist",
+    "dev": "rollup -c -w"
 	},
 	"devDependencies": {
-    "@so1ve/eslint-config": "^0.106.1",
-    "eslint": "^8.42.0"
+		"@so1ve/eslint-config": "^0.106.1",
+		"eslint": "^8.42.0",
+		"rollup": "^3.29.4",
+		"@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.2.1",
+    "@rollup/plugin-typescript": "^10.0.1",
+		"rollup-plugin-dts": "^6.0.2",
+		"@babel/preset-typescript": "^7.23.0"
 	}
 }
