@@ -7,7 +7,16 @@ export class Savior {
   b: number;
   a: number;
   lineWidth: number;
-  constructor(options: { x: number; y: number; z: number; r: number, g: number, b: number, a: number, lineWidth: number }) {
+  constructor(options: {
+    x: number;
+    y: number;
+    z: number;
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+    lineWidth: number;
+  }) {
     this.x = options.x;
     this.y = options.y;
     this.z = options.z;

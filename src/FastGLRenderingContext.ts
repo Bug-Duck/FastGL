@@ -130,6 +130,10 @@ export class FastGLRenderingContext {
     this.z = z;
   }
 
+  beginPath() {
+    this.#trajectory = [];
+  }
+
   stroke() {
     for (const i of this.#trajectory) {
       if (i.type === "lineTo") {

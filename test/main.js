@@ -2,12 +2,15 @@ import { createFastGLContext } from "../dist/fastgl.js";
 
 const fastgl = createFastGLContext(document.querySelector("#canvas"));
 
-fastgl.setStrokeColor(200, 0, 0, 1);
-fastgl.dot(200, 200, 0, 100);
-// fastgl.dot(500, 0, 0, 100);
-// fastgl.dot(0, 0, 0, 100);
-fastgl.moveTo(400, 100, 0);
-fastgl.lineTo(100, 100, 1);
-fastgl.moveTo(500, 500, 0);
-fastgl.lineTo(200, 300, 1);
-fastgl.stroke();
+let r = 0;
+setInterval(() => {
+  fastgl.setStrokeColor(r, r, r, 1);
+  for (let i = 0; i <= 100; i += 20) {
+    for (let n = 0; n <= 100; n += 20) {
+      fastgl.dot(n + 10, i + 10, 0, 10);
+    }
+  }
+  if (r !== 255) {
+    r += 2;
+  }
+}, 1000 / 60);
